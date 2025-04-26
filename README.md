@@ -60,6 +60,27 @@ cd SkyReels-V2
 pip install -r requirements.txt
 ```
 
+```bash
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+
+model_id=Skywork/SkyReels-V2-DF-1.3B-540P
+# synchronous inference
+python3 generate_video_df.py \
+  --model_id ${model_id} \
+  --resolution 540P \
+  --ar_step 0 \
+  --base_num_frames 97 \
+  --num_frames 257 \
+  --overlap_history 17 \
+  --prompt "A graceful white swan with a curved neck and delicate feathers swimming in a serene lake at dawn, its reflection perfectly mirrored in the still water as mist rises from the surface, with the swan occasionally dipping its head into the water to feed." \
+  --addnoise_condition 20 \
+  --offload \
+  --teacache \
+  --use_ret_steps \
+  --teacache_thresh 0.3
+```
+
 #### Model Download
 You can download our models from Hugging Face:
 <table>
