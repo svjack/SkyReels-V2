@@ -57,13 +57,15 @@ The demos above showcase 30-second videos generated using our SkyReels-V2 Diffus
 git clone https://github.com/SkyworkAI/SkyReels-V2
 cd SkyReels-V2
 # Install dependencies. Test environment uses Python 3.10.12.
-pip install -r requirements.txt
-```
 
-```bash
 wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp311-cp311-linux_x86_64.whl
 wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
+pip uninstall -y torch torchvision xformers && pip install torch==2.5.0 torchvision xformers 
+pip install flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+```
+
+```bash
 model_id=Skywork/SkyReels-V2-DF-1.3B-540P
 # synchronous inference
 python3 generate_video_df.py \
